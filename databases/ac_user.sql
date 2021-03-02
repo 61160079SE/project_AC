@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2021 at 05:37 PM
+-- Generation Time: Mar 02, 2021 at 02:22 PM
 -- Server version: 5.6.38-log
 -- PHP Version: 7.3.19-1+0~20200612.60+debian9~1.gbp6c8fe1
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ac_user` (
-  `us_id` int(11) NOT NULL,
-  `us_name` varchar(255) NOT NULL,
-  `us_pass` varchar(255) NOT NULL,
-  `us_last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `us_id` int(11) NOT NULL COMMENT 'id ผู้ใช้งาน',
+  `us_name` varchar(255) NOT NULL COMMENT 'ชื่อผู้ใช้ (Username)',
+  `us_pass` varchar(255) NOT NULL COMMENT 'รหัสผ่าน (Passwords)',
+  `us_last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'ผู้ใช้งานเข้าใช้ระบบครั้งล่าสุดเมื่อไหร่'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -61,7 +61,7 @@ ALTER TABLE `ac_user`
 -- AUTO_INCREMENT for table `ac_user`
 --
 ALTER TABLE `ac_user`
-  MODIFY `us_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `us_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id ผู้ใช้งาน', AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

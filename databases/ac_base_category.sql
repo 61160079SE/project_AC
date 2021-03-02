@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2021 at 05:38 PM
+-- Generation Time: Mar 02, 2021 at 02:21 PM
 -- Server version: 5.6.38-log
 -- PHP Version: 7.3.19-1+0~20200612.60+debian9~1.gbp6c8fe1
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ac_base_category` (
-  `bc_id` int(11) NOT NULL,
-  `bc_name` varchar(255) NOT NULL,
-  `bc_mt_id` int(11) NOT NULL,
-  `bc_us_id` int(11) NOT NULL
+  `bc_id` int(11) NOT NULL COMMENT 'id ข้อมูลพื้นฐาน',
+  `bc_name` varchar(255) NOT NULL COMMENT 'เก็บชื่อรายการข้อมูลพื้นฐาน',
+  `bc_mt_id` int(11) NOT NULL COMMENT 'FK เชื่อมตาราง ac_money_type',
+  `bc_us_id` int(11) NOT NULL COMMENT 'FK เชื่อมตาราง ac_user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -65,7 +65,7 @@ ALTER TABLE `ac_base_category`
 -- AUTO_INCREMENT for table `ac_base_category`
 --
 ALTER TABLE `ac_base_category`
-  MODIFY `bc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `bc_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id ข้อมูลพื้นฐาน', AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

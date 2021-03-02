@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2021 at 05:37 PM
+-- Generation Time: Mar 02, 2021 at 02:22 PM
 -- Server version: 5.6.38-log
 -- PHP Version: 7.3.19-1+0~20200612.60+debian9~1.gbp6c8fe1
 
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ac_list_money` (
-  `lm_id` int(11) NOT NULL,
-  `lm_date` date NOT NULL,
-  `lm_customize_category` varchar(255) DEFAULT NULL,
-  `lm_money` float NOT NULL,
-  `lm_bc_id` int(11) DEFAULT NULL,
-  `lm_us_id` int(11) NOT NULL DEFAULT '1',
-  `lm_mt_id` int(11) NOT NULL DEFAULT '1'
+  `lm_id` int(11) NOT NULL COMMENT 'id รายการเงิน',
+  `lm_date` date NOT NULL COMMENT 'วัน เดือน ปี ของรายการเงิน',
+  `lm_customize_category` varchar(255) DEFAULT NULL COMMENT 'เก็บชื่อรายการเงินที่ไม่ใช่ในข้อมูลพื้นฐาน (ถ้าคอลัมน์นี้ไม่เป็น NULL คอลัมน์ lm_bc_id จะต้อง NULL)',
+  `lm_money` float NOT NULL COMMENT 'เก็บจำนวนเงิน',
+  `lm_bc_id` int(11) DEFAULT NULL COMMENT 'เก็บ id ข้อมูลพื้นฐาน (ถ้าคอลัมน์นี้ไม่เป็น NULL คอลัมน์ lm_customize_category เป็น NULL)',
+  `lm_us_id` int(11) NOT NULL DEFAULT '1' COMMENT 'FK เชื่อมตาราง  ac_user',
+  `lm_mt_id` int(11) NOT NULL DEFAULT '1' COMMENT 'FK เชื่อตาราง ac_money_type'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -74,7 +74,7 @@ ALTER TABLE `ac_list_money`
 -- AUTO_INCREMENT for table `ac_list_money`
 --
 ALTER TABLE `ac_list_money`
-  MODIFY `lm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `lm_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id รายการเงิน', AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

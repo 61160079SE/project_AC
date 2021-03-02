@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2021 at 05:37 PM
+-- Generation Time: Mar 02, 2021 at 02:22 PM
 -- Server version: 5.6.38-log
 -- PHP Version: 7.3.19-1+0~20200612.60+debian9~1.gbp6c8fe1
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ac_money_type` (
-  `mt_id` int(11) NOT NULL,
-  `mt_name` varchar(255) NOT NULL
+  `mt_id` int(11) NOT NULL COMMENT 'id ประเภทเงิน',
+  `mt_name` varchar(255) NOT NULL COMMENT 'ชื่อประเภทเงิน เช่น รายรับ รายจ่าย'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -59,7 +59,7 @@ ALTER TABLE `ac_money_type`
 -- AUTO_INCREMENT for table `ac_money_type`
 --
 ALTER TABLE `ac_money_type`
-  MODIFY `mt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `mt_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id ประเภทเงิน', AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

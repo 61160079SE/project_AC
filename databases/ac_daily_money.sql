@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2021 at 05:37 PM
+-- Generation Time: Mar 02, 2021 at 02:21 PM
 -- Server version: 5.6.38-log
 -- PHP Version: 7.3.19-1+0~20200612.60+debian9~1.gbp6c8fe1
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ac_daily_money` (
-  `dm_id` int(11) NOT NULL,
-  `dm_date` date NOT NULL,
-  `dm_sum_income` float NOT NULL,
-  `dm_sum_expense` float NOT NULL,
-  `dm_us_id` int(11) NOT NULL
+  `dm_id` int(11) NOT NULL COMMENT 'id ข้อมูลสรุปเงินรายวัน',
+  `dm_date` date NOT NULL COMMENT 'วัน เดือน ปี ของข้อมูลรายวัน',
+  `dm_sum_income` float NOT NULL COMMENT 'ผลรวมรายรับ',
+  `dm_sum_expense` float NOT NULL COMMENT 'ผลรวมรายจ่าย',
+  `dm_us_id` int(11) NOT NULL COMMENT 'FK เชื่อมตาราง ac_user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -65,7 +65,7 @@ ALTER TABLE `ac_daily_money`
 -- AUTO_INCREMENT for table `ac_daily_money`
 --
 ALTER TABLE `ac_daily_money`
-  MODIFY `dm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `dm_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id ข้อมูลสรุปเงินรายวัน', AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
