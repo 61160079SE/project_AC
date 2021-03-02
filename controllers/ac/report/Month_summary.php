@@ -1,9 +1,9 @@
 <?php
 /*
  * Month_summary
- * controller รายงานผลสรุปปีงบประมาณ
- * @author 61160079 Adithep Phompha
- * @Create Date 2563-12-11
+ * controller สรุปผลรายเดือน
+ * @author 61160182 Nawarut Nambunsri
+ * @Create Date 2564-03-02
  */
 
 if (!defined('BASEPATH')) {
@@ -23,14 +23,13 @@ class Month_summary extends AC_Controller
      * -
      * @input -
      * @output -
-     * @author 61160079 Adithep Phompha
-     * @Create Date 2563-12-11
+     * @author 61160182 Nawarut Nambunsri
+     * @Create Date 2564-03-02
      */
 
     public function __construct()
     {
         parent::__construct();
-
     } //__construct
 
     // =====================================================================================================================
@@ -40,11 +39,11 @@ class Month_summary extends AC_Controller
 
     /*
      * show_month_summary
-     * ใช้เรียกหน้าจอรายงานผลสรุปปีงบประมาณ
+     * ใช้เรียกหน้าจอสรุปผลรายเดือน
      * @input -
-     * @output หน้าจอรายงานผลสรุปปีงบประมาณ
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2563-11-24
+     * @output หน้าจอสรุปผลรายเดือน
+     * @author 61160182 Nawarut Nambunsri
+     * @Create Date 2564-03-02
      */
 
     public function show_month_summary()
@@ -55,5 +54,30 @@ class Month_summary extends AC_Controller
     // =====================================================================================================================
     // =====================================================================================================================
     // =====================================================================================================================
+    /*=====  ajax  ======*/
 
+    /*
+     * get_month_money_ajax
+     * ดึงข้อมูลรายการเงิน
+     * @input -
+     * @output หน้าจอแสดงรายละเอียดรายวัน
+     * @author 61160182 Nawarut Nambunsri
+     * @Create Date 2564-03-02
+     */
+
+    public function get_month_money_ajax()
+    {
+        $this->load->model($this->config->item('ac_m_folder') . 'M_ac_daily_money', 'mdm');
+        $this->mdm->dm_us_id = $this->input->post('user_id');
+        $this->mdm->year = $this->input->post('year');
+        $data["month_money"] = $this->mdm->get_month()->result();
+        if (empty($data["month_money"])) {
+            $data["month_money"] = "no_data";
+        }
+        echo json_encode($data);
+    } // get_daily_money
+
+    // =====================================================================================================================
+    // =====================================================================================================================
+    // =====================================================================================================================
 } //end class Month_summary

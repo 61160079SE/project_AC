@@ -1,3 +1,12 @@
+<?php
+/*
+ * v_month_summary
+ * controller สรุปผลรายเดือน
+ * @author 61160182 Nawarut Nambunsri
+ * @Create Date 2564-03-02
+ */
+?>
+
 <div class="card">
     <div class="card-header card-header-icon card-header-primary">
         <div class="card-icon">
@@ -39,29 +48,51 @@
 
 <script>
 $(document).ready(function() {
-    create_table();
+    get_month_money();
 });
+/*
+ * get_month_money
+ * ดึงข้อมูลรายการเงิน
+ * @input -
+ * @output -
+ * @author 61160182 Nawarut Nambunsri
+ * @Create Date 2564-03-02
+ */
+function get_month_money() {
+    $.ajax({
+        type: "post",
+        url: "<?php echo site_url() . "/" . $this->config->item('ac_month_summary') ?>get_month_money_ajax",
+        data: {
+            'year': 2564,
+            'user_id': 1
+        },
+        dataType: "JSON",
+        success: function(json_data) {
+            console.log(json_data);
+            create_table(json_data["month_money"]);
+        }
+    }); //ajax
+}
 
-function create_table() {
-    let mock_data = [{
-        month: 'มกราคม',
-        income: '30,000.00',
-        outcome: '20,000.00',
-        total: '10,000.00'
-    }, {
-        month: 'กุมภาพันธ์',
-        income: '30,000.00',
-        outcome: '20,000.00',
-        total: '20,000.00'
-    }]
+
+/*
+ * create_table
+ * สร้างตารางสรุปผลรายเดือน
+ * @input -
+ * @output หน้าจอสรุปผลรายเดือน
+ * @author 61160182 Nawarut Nambunsri
+ * @Create Date 2564-03-02
+ */
+function create_table(month_money) {
     let html_table = ""
-    $.each(mock_data, function(index, val) {
+    $.each(month_money, function(index, val) {
+        let remaining_buget = val.sum_income - val.sum_expense;
         html_table += '<tr>'
         html_table += '<td class="text-center">' + (index + 1) + '</td>'
-        html_table += '<td class="text-left">' + val.month + '</td>'
-        html_table += '<td class="text-right">' + val.income + '</td>'
-        html_table += '<td class="text-right">' + val.outcome + '</td>'
-        html_table += '<td class="text-right">' + val.total + '</td>'
+        html_table += '<td class="text-left">' + convert_date_to_month(val.dm_date) + '</td>'
+        html_table += '<td class="text-right">' + formatNumber(val.sum_income) + '</td>'
+        html_table += '<td class="text-right">' + formatNumber(val.sum_expense) + '</td>'
+        html_table += '<td class="text-right">' + formatNumber(remaining_buget) + '</td>'
         html_table += '<td class="text-center">'
         html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_daily_summary") ?>show_daily_summary">'
         html_table += '<button class="btn btn-primary acr_button" style="margin:5px;">'
@@ -72,5 +103,5 @@ function create_table() {
         html_table += '</tr>'
     });
     $('#table_month tbody').html(html_table)
-}
+} //create_table
 </script>

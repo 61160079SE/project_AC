@@ -348,3 +348,37 @@ function formatCurrency(input, blur) {
 <!--==========================================================================================================-->
 <!--==========================================================================================================-->
 <!--==========================================================================================================-->
+
+<script>
+function convert_date_to_month(date) {
+    let month = " ";
+    let arr_date = date.split("-");
+    let month_number = arr_date[1];
+    if (month_number == "01") {
+        month = "มกราคม";
+    } else if (month_number == "02") {
+        month = "กุมภาพันธ์";
+    } else if (month_number == "03") {
+        month = "มีนาคม";
+    } else if (month_number == "04") {
+        month = "เมษายม";
+    } else if (month_number == "05") {
+        month = "พฤษภาคม";
+    } else if (month_number == "06") {
+        month = "มิถุนายน";
+    } else if (month_number == "07") {
+        month = "กรกฎาคม";
+    } else if (month_number == "08") {
+        month = "สิงหาคม";
+    } else if (month_number == "09") {
+        month = "กันยายน";
+    } else if (month_number == "10") {
+        month = "ตุลาคม";
+    } else if (month_number == "11") {
+        month = "พฤษจิกายน";
+    } else if (month_number == "12") {
+        month = "ธันวาคม";
+    }
+    return month;
+}
+</script>
