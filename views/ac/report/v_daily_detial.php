@@ -1,9 +1,13 @@
+<script>
+var gl_sum_income = 0;
+var gl_sum_expense = 0;
+</script>
 <div id=" slie12 ">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <input type="date" name="" id="">
+                    วันเดือนปี
                 </div>
             </div>
         </div>
@@ -15,17 +19,17 @@
                         <div class="col-md-5">
                             <div class="row"> <i class="material-icons">equalizer</i>  รายรับ : </div>
                         </div>
-                        <div class="col-md-7" id="income_money" style="text-align:right">23,537,303.10 ฿</div>
+                        <div class="col-md-7" id="income_money" style="text-align:right"> </div>
                         <!-- รายจ่าย -->
                         <div class="col-md-5">
                             <div class="row"><i class="material-icons">equalizer</i>  รายจ่าย : </div>
                         </div>
-                        <div class="col-md-7" id="expense_money" style="text-align:right">0.00 ฿</div>
+                        <div class="col-md-7" id="expense_money" style="text-align:right"></div>
                         <!-- คงเหลือ -->
                         <div class="col-md-5">
                             <div class="row"><i class="material-icons">equalizer</i>  คงเหลือ : </div>
                         </div>
-                        <div class="col-md-7" id="remaining_budget" style="text-align:right">23,537,303.10 ฿</div>
+                        <div class="col-md-7" id="remaining_budget" style="text-align:right"> </div>
                     </div>
                 </div>
             </div>
@@ -84,53 +88,91 @@
 
 <script>
 $(document).ready(function() {
-    create_table(1, "data");
-    create_table(2, "data");
+    get_list_money();
 });
+/*
+ * get_list_money
+ * ดึงข้อมูลรายการเงิน
+ * @input -
+ * @output -
+ * @author 61160173 Jirawat yuenkaew
+ * @Create Date 2564-03-02
+ */
+function get_list_money() {
+    $.ajax({
+        type: "post",
+        url: "<?php echo site_url() . "/" . $this->config->item('ac_daily_detail') ?>get_list_money_ajax",
+        data: {
+            'date': "2564-01-12",
+            'user_id': 1
+        },
+        dataType: "JSON",
+        success: function(json_data) {
+            console.log(json_data);
+            create_table(1, json_data["income"]);
+            create_table(2, json_data["expense"]);
+        }
+    }); //ajax
+}
 
-function create_table(money_type, data) {
+/*
+ * create_table
+ * สร้างตาราง
+ * @input money_type
+ * @output -
+ * @author 61160173 Jirawat yuenkaew
+ * @Create Date 2564-03-02
+ */
+function create_table(money_type, money_data) {
     let html_code = "";
-
-    html_code += '<table class="table table-striped table-color-header table-hover table-border" cellspacing="0" width="100%" style="width:100%">';
-    html_code += '   <thead class=" text-primary">';
-    html_code += '     <tr>'
-    html_code += '        <th class="head_color" style="text-align : center">ลำดับ</th>';
-    if (money_type == 1) {
-        html_code += '         <th class="head_color" style="text-align :h left">รายการรายรับ</th>'
+    let sum_money = 0;
+    if (money_data == "no_data") {
+        html_code += 'ไม่มีข้อมูล ';
     } else {
-        html_code += '         <th class="head_color" style="text-align :h left">รายการรายจ่าย</th>'
-    };
-    html_code += '<th class="head_color" style="text-align : center">จำนวนเงิน (บาท)</th>';
-    html_code += '</tr>';
-    html_code += '</thead>';
-    html_code += '<tbody>';
-    html_code += '<tr>';
-    html_code += '<td style="text-align : center">1</td>';
-    html_code += '<td style="text-align : left">เงินจากที่ทำงานพิเศษ</td>';
-    html_code += '<td style="text-align : center" colspan="5"> 7,500.00 </td>';
-    html_code += '</tr>';
-    html_code += '<tr>';
-    html_code += '<td style="text-align : center">2</td>';
-    html_code += '<td style="text-align : left">เงินจากพ่อแม่</td>';
-    html_code += '<td style="text-align : center" colspan="5"> 7,000.00 </td>';
-    html_code += '</tr>';
-    html_code += '<tr>';
-    html_code += '<td style="text-align : center">3</td>';
-    html_code += '<td style="text-align : left">ญาติให้ค่าขนมมา</td>';
-    html_code += '<td style="text-align : center" colspan="5"> 500.00 </td>';
-    html_code += '</tr>';
-    html_code += '<tr>';
-    html_code += '<td style="text-align : left"></td>';
-    html_code += '<td style="text-align : center">รวม</td>';
-    html_code += '<td style="text-align : center" colspan="5"> 15,000.00 </td>';
-    html_code += '</tr>';
-    html_code += '</tbody>';
-    html_code += '</table>';
-
+        html_code += '<table class="table table-striped table-color-header table-hover table-border" cellspacing="0" width="100%" style="width:100%">';
+        html_code += '   <thead class=" text-primary">';
+        html_code += '     <tr>'
+        html_code += '        <th class="head_color" style="text-align : center">ลำดับ</th>';
+        if (money_type == 1) {
+            html_code += '         <th class="head_color" style="text-align :h left">รายการรายรับ</th>'
+        } else {
+            html_code += '         <th class="head_color" style="text-align :h left">รายการรายจ่าย</th>'
+        };
+        html_code += '<th class="head_color" style="text-align : center">จำนวนเงิน (บาท)</th>';
+        html_code += '</tr>';
+        html_code += '</thead>';
+        html_code += '<tbody>';
+        money_data.forEach((row, index) => {
+            html_code += '<tr>';
+            html_code += '<td style="text-align : center">' + (index + 1) + '</td>';
+            if (row.lm_customize_category != null) {
+                html_code += '<td style="text-align : left">' + row.lm_customize_category + '</td>';
+            } else {
+                html_code += '<td style="text-align : left">' + row.bc_name + '</td>';
+            }
+            html_code += '<td style="text-align : right" colspan="5"> ' + formatNumber(row.lm_money) + ' </td>';
+            html_code += '</tr>';
+            sum_money += parseFloat(row.lm_money);
+        }); //foreach
+        html_code += '<tr>';
+        html_code += '<td>';
+        html_code += '</td>';
+        html_code += '<td td style="text-align : center" > รวม';
+        html_code += '</td>';
+        html_code += '<td style="text-align : right " colspan="5"> ' + formatNumber(sum_money) + ' </td>';
+        html_code += '</tr>';
+        html_code += '</tbody>';
+        html_code += '</table>';
+    }
     if (money_type == 1) {
         $('#table_income').html(html_code)
+        $('#income_money').html(formatNumber(sum_money) + "  ฿")
+        gl_sum_income = sum_money;
     } else {
         $('#table_expense').html(html_code)
+        $('#expense_money').html(formatNumber(sum_money) + "  ฿")
+        $('#remaining_budget').html(formatNumber(gl_sum_income - sum_money) + "  ฿")
+        gl_sum_expense = sum_money;
     };
 
 } //create_table

@@ -12,39 +12,39 @@
 </style>
 
 <script>
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    /*  wizzard_tab  */
+//     /*  wizzard_tab  */
 
-    select_tab1(); //ให้ default คือ tab แรก
+//     select_tab1(); //ให้ default คือ tab แรก
 
-    $("#wizzard_tab1").click(function() {
-        select_tab1();
-    }); //wizzard_tab1
-    $("#wizzard_tab2").click(function() {
-        select_tab2();
-    }); //wizzard_tab2
-    $("#wizzard_tab3").click(function() {
-        select_tab3();
-    }); //wizzard_tab3
+//     $("#wizzard_tab1").click(function() {
+//         select_tab1();
+//     }); //wizzard_tab1
+//     $("#wizzard_tab2").click(function() {
+//         select_tab2();
+//     }); //wizzard_tab2
+//     $("#wizzard_tab3").click(function() {
+//         select_tab3();
+//     }); //wizzard_tab3
 
 
-    /*  wizzard_button  */
+//     /*  wizzard_button  */
 
-    $("#tab1_button_next").click(function() {
-        select_tab2();
-    }); //tab1_button_next
-    $("#tab2_button_next").click(function() {
-        select_tab3();
-    }); //tab2_button_next
-    $("#tab2_button_previous").click(function() {
-        select_tab1();
-    }); //tab2_button_previous
-    $("#tab3_button_previous").click(function() {
-        select_tab2();
-    }); //tab3_button_previous
+//     $("#tab1_button_next").click(function() {
+//         select_tab2();
+//     }); //tab1_button_next
+//     $("#tab2_button_next").click(function() {
+//         select_tab3();
+//     }); //tab2_button_next
+//     $("#tab2_button_previous").click(function() {
+//         select_tab1();
+//     }); //tab2_button_previous
+//     $("#tab3_button_previous").click(function() {
+//         select_tab2();
+//     }); //tab3_button_previous
 
-}); // document ready
+// }); // document ready
 
 
 /*  wizzard_tab  */
@@ -234,9 +234,9 @@ function remove_comma(number) {
  * @Create Date 2564-01-29
  * @syntax: class=\"chk_number\"
  */
-$(document).on('keyup', '.chk_number', function() {
-    formatCurrency($(this));
-});
+// $(document).on('keyup', '.chk_number', function() {
+//     formatCurrency($(this));
+// });
 
 function formatNumbers(n) {
     // format number 1000000 to 1,234,567
