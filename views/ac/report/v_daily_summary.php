@@ -47,21 +47,42 @@ function create_table() {
     html_code += ' <td style="text-align : right">15,000.00</td>';
     html_code += ' <td style="text-align : right">12,000.00 </td>';
     html_code += ' <td style="text-align : right">3,000.00 </td>';
-    html_code += ' <td style="text-align : center"><button class="btn btn-primary acr_button" style="margin:5px;"><i class="material-icons">search</i></button></td>';
+
+    html_code += ' <td style="text-align : center">';
+    html_code += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_daily_detail") ?>show_daily_detail">'
+    html_code += '<button class="btn btn-primary acr_button" style="margin:5px;">'
+    html_code += '<i class="material-icons">search</i>'
+    html_code += '</button>'
+    html_code += '</a>'
+    html_code += '</td>'
     html_code += ' </tr>';
     html_code += ' <tr>';
     html_code += ' <td style="text-align : center">2</td>';
     html_code += ' <td style="text-align : right">500.00</td>';
     html_code += ' <td style="text-align : right">200.00 </td>';
     html_code += ' <td style="text-align : right">3,300.00 </td>';
-    html_code += ' <td style="text-align : center"><button class="btn btn-primary acr_button" style="margin:5px;"><i class="material-icons">search</i></button></td>';
+
+    html_code += ' <td style="text-align : center">';
+    html_code += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_daily_detail") ?>show_daily_detail">'
+    html_code += '<button class="btn btn-primary acr_button" style="margin:5px;">'
+    html_code += '<i class="material-icons">search</i>'
+    html_code += '</button>'
+    html_code += '</a>'
+    html_code += '</td>'
     html_code += ' </tr>';
     html_code += ' <tr>';
     html_code += ' <td style="text-align : center">3</td>';
     html_code += ' <td style="text-align : right">500.00</td>';
     html_code += ' <td style="text-align : right">300.00 </td>';
     html_code += ' <td style="text-align : right">3,500.00 </td>';
-    html_code += ' <td style="text-align : center"><button class="btn btn-primary acr_button" style="margin:5px;"><i class="material-icons">search</i></button></td>';
+
+    html_code += ' <td style="text-align : center">';
+    html_code += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_daily_detail") ?>show_daily_detail">'
+    html_code += '<button class="btn btn-primary acr_button" style="margin:5px;">'
+    html_code += '<i class="material-icons">search</i>'
+    html_code += '</button>'
+    html_code += '</a>'
+    html_code += '</td>'
     html_code += ' </tr>';
     html_code += ' </tbody>';
     html_code += ' </table>';

@@ -63,9 +63,11 @@ function create_table() {
         html_table += '<td class="text-right">' + val.outcome + '</td>'
         html_table += '<td class="text-right">' + val.total + '</td>'
         html_table += '<td class="text-center">'
+        html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_daily_summary") ?>show_daily_summary">'
         html_table += '<button class="btn btn-primary acr_button" style="margin:5px;">'
         html_table += '<i class="material-icons">search</i>'
         html_table += '</button>'
+        html_table += '</a>'
         html_table += '</td>'
         html_table += '</tr>'
     });
