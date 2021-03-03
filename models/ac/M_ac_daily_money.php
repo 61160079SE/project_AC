@@ -52,6 +52,45 @@ class M_ac_daily_money extends Da_ac_daily_money
   } //get_month
 
   /*
+     * get_by_year
+     * ดึงข้อมูลทั้งหมดรายปี
+     * @input -
+     * @output ข้อมูลทั้งหมดรายปี
+     * @author 60160341 Preeyanut Boonmeemak
+     * @Create Date 2564-03-02
+     */
+  public function get_by_year()
+  {
+
+    $sql = "SELECT dm_id,dm_date,SUM(dm_sum_income) AS sum_income,SUM(dm_sum_expense) AS sum_expense,dm_us_id,YEAR(dm_date) AS sum_year
+				FROM {$this->db_name}.ac_daily_money 
+        WHERE dm_us_id = ?
+        GROUP BY year(dm_date)";
+    $query = $this->db->query($sql, array($this->dm_us_id));
+    return $query;
+  } //get_by_year
+
+  /*
+     * get_all_year
+     * ดึงข้อมูลปีทั้งหมด
+     * @input -
+     * @output ข้อมูลปีทั้งหมด
+     * @author 60160341 Preeyanut Boonmeemak
+     * @Create Date 2564-03-02
+     */
+    public function get_all_year()
+    {
+      $sql = "SELECT YEAR(dm_date) AS year
+          FROM {$this->db_name}.ac_daily_money 
+          WHERE dm_us_id = ?
+          GROUP BY year(dm_date)
+          ORDER BY year(dm_date) DESC";
+      $query = $this->db->query($sql, array($this->dm_us_id));
+      return $query;
+    } //get_all_year
+
+
+  /*
      * get_by_date
      * ดึงข้อมูลทั้งหมดในตารางออกมา
      * @input -
