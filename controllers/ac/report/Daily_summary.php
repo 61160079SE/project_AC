@@ -55,5 +55,27 @@ class Daily_summary extends AC_Controller
     // =====================================================================================================================
     // =====================================================================================================================
     // =====================================================================================================================
+ /*
+     * get_daily_money_ajax
+     * ดึงข้อมูลรายการเงิน
+     * @input -
+     * @output หน้าจอแสดงรายละเอียดรายวัน
+     * @author 61160077 Siripoon Yimthanom
+     * @Create Date 2564-03-02
+     */
+
+    public function get_daily_money_ajax()
+    {
+        $this->load->model($this->config->item('ac_m_folder') . 'M_ac_daily_money', 'mdm');
+        $this->mdm->dm_us_id = $this->input->post('user_id');
+        $this->mdm->year = $this->input->post('year');
+        $this->mdm->month = $this->input->post('month');
+        
+        $data["daily_money"] = $this->mdm->get_daily()->result();
+        if (empty($data["daily_money"])) {
+            $data["daily_money"] = "no_data";
+        }
+        echo json_encode($data);
+    } // get_daily_money
 
 } //end class Daily_summary

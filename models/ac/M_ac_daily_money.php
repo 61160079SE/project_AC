@@ -89,13 +89,26 @@ class M_ac_daily_money extends Da_ac_daily_money
       return $query;
     } //get_all_year
 
-
-  /*
-     * get_by_date
+/*
+     * get_daily
      * ดึงข้อมูลทั้งหมดในตารางออกมา
      * @input -
-     * @output ข้อมูลทั้งหมดในตารางโดยดึงตามวันที่และไอดีผู้ใช้
-     * @author 61160182 Nawarut Nambunsri
+     * @output ข้อมูลวันทั้งหมดในตารางของผู้ใช้ที่ระบุไว้
+     * @author 61160077 Siripoon Yimthanom
      * @Create Date 2564-03-02
      */
+
+    public function get_daily()
+    {
+  
+      $sql = "SELECT dm_id,dm_date,dm_sum_income AS sum_income,dm_sum_expense AS sum_expense,dm_us_id
+          FROM {$this->db_name}.ac_daily_money 
+          WHERE dm_us_id =? AND YEAR(dm_date) = ? AND MONTH(dm_date) = ? 
+          ORDER BY dm_date ASC ";
+  
+      $query = $this->db->query($sql, array($this->dm_us_id, $this->year,$this->month));
+      return $query;
+    } //get_daily
+
+  
 } //end class M_ac_daily_money
