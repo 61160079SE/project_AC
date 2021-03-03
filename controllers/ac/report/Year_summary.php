@@ -52,8 +52,24 @@ class Year_summary extends AC_Controller
         $this->output_md($this->config->item('ac_v_report_folder') . "v_year_summary");
     } // show_year_summary
 
-    // =====================================================================================================================
-    // =====================================================================================================================
-    // =====================================================================================================================
+    /*
+     * get_year_money_ajax
+     * ดึงข้อมูลรายการเงินรายปี
+     * @input -
+     * @output ข้อมูลรายการเงินรายปี
+     * @author 60160341 Preeyanut Boonmeemak
+     * @Create Date 2564-03-02
+     */
+
+    public function get_year_money_ajax()
+    {
+        $this->load->model($this->config->item('ac_m_folder') . 'M_ac_daily_money', 'mdm');
+        $this->mdm->dm_us_id = $this->input->post('user_id');
+        $data["year_money"] = $this->mdm->get_by_year()->result();
+        if (empty($data["year_money"])) {
+            $data["year_money"] = "no_data";
+        }
+        echo json_encode($data);
+    } // get_year_money_ajax
 
 } //end class Year_summary
