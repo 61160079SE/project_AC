@@ -14,6 +14,7 @@
                     <table id="table-summary-year" class="table table-striped table-color-header table-hover table-border" cellspacing="0" width="100%" style="width:100%">
                         <thead>
                             <tr>
+                                <th class="text-center">ลำดับ</th>
                                 <th class="text-center">ปี</th>
                                 <th class="text-center">รายรับ (บาท)</th>
                                 <th class="text-center">รายจ่าย (บาท)</th>
@@ -33,47 +34,63 @@
 
 <script>
 $(document).ready(function() {
-    create_table()
+    get_year_money()
 })
 
-function create_table() {
-    let mock_data = [{
-            year: '2564',
-            income: '56,000.00',
-            outcome: '38,000.00',
-            total: '15,500.00'
+/*
+ * get_year_money
+ * ดึงข้อมูลรายการเงิน
+ * @input -
+ * @output -
+ * @author 60160341 Preeyanut Boonmeemak
+ * @Create Date 2564-03-02
+ */
+function get_year_money() {
+    $.ajax({
+        type: "post",
+        url: "<?php echo site_url() . "/" . $this->config->item('ac_year_summary') ?>get_year_money_ajax",
+        data: {
+            'user_id': 1
         },
-        {
-            year: '2563',
-            income: '16,000.00',
-            outcome: '14,000.00',
-            total: '2,000.00'
-        },
-        {
-            year: '2562',
-            income: '26,000.00',
-            outcome: '24,000.00',
-            total: '2,000.00'
+        dataType: "JSON",
+        success: function(json_data) {
+            create_table(json_data["year_money"]);
         }
-    ]
+    }); //ajax
+}
+
+/*
+ * create_table
+ * สร้างตารางสรุปผลรายปี
+ * @input -
+ * @output หน้าจอสรุปผลรายปี
+ * @author 60160341 Preeyanut Boonmeemak
+ * @Create Date 2564-03-02
+ */
+function create_table(data) {
     let html_table = ''
-    $.each(mock_data, function(index, val) {
-        html_table += '<tr>'
-        html_table += '<td class="text-center">' + val.year + '</td>'
-        html_table += '<td class="text-right">' + val.income + '</td>'
-        html_table += '<td class="text-right">' + val.outcome + '</td>'
-        html_table += '<td class="text-right">' + val.total + '</td>'
-        html_table += '<td class="text-center">'
-        html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_month_summary") ?>show_month_summary">'
-        html_table += '<button class="btn btn-primary acr_button" style="margin:5px;">'
-        html_table += '<i class="material-icons">search</i>'
-        html_table += '</button>'
-        html_table += '</a>'
-        html_table += '</td>'
-        html_table += '</tr>'
-    });
+    if(data !== "no_data"){
+        $.each(data, function(index, val) {
+            html_table += '<tr>'
+            html_table += '<td class="text-center">' + (index + 1) + '</td>'
+            html_table += '<td class="text-center">' + (parseInt(val.sum_year) + 543) + '</td>'
+            html_table += '<td class="text-right">' + formatNumber(val.sum_income) + '</td>'
+            html_table += '<td class="text-right">' + formatNumber(val.sum_expense) + '</td>'
+            html_table += '<td class="text-right">' + formatNumber(val.sum_income - val.sum_expense) + '</td>'
+            html_table += '<td class="text-center">'
+            html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_month_summary") ?>show_month_summary">'
+            html_table += '<button class="btn btn-primary acr_button" style="margin:5px;">'
+            html_table += '<i class="material-icons">search</i>'
+            html_table += '</button>'
+            html_table += '</a>'
+            html_table += '</td>'
+            html_table += '</tr>'
+        });
+    }
+    
 
     $('#table-summary-year tbody').html(html_table)
+    make_dataTable_byId('table-summary-year')
 
 }
 </script>
