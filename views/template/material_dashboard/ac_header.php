@@ -1,9 +1,5 @@
-<!-- ========================================================================================================== -->
-<!-- ========================================================================================================== -->
-<!-- ========================================================================================================== -->
-
-
 <!-- wizard tab -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/plugin/DataTables/datatables.min.css" />
 
 <style>
 .tab_active_font {
@@ -312,6 +308,36 @@ function formatCurrency(input, blur) {
     caret_pos = updated_len - original_len + caret_pos;
     input[0].setSelectionRange(caret_pos, caret_pos);
 }
+
+function make_dataTable_byId(id_name) {
+
+    var datatable = $('#' + id_name).DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "ทั้งหมด"]
+        ],
+        responsive: true,
+        language: {
+            lengthMenu: "แสดง _MENU_ รายการ",
+            emptyTable: "ไม่พบข้อมูลในตาราง",
+            search: "ค้นหา :_INPUT_",
+            searchPlaceholder: "ค้นหาข้อมูลในตาราง...",
+            info: "แสดงหน้าที่ _START_ จาก _PAGES_ หน้า ทั้งหมด _TOTAL_ รายการ",
+            infoEmpty: "แสดงหน้าที่ 0 จาก 0 หน้า รายการทั้งหมด 0 รายการ",
+            zeroRecords: "ไม่พบข้อมูลที่ค้นหาในตาราง",
+            infoFiltered: "",
+            paginate: {
+                "first": "",
+                "last": "",
+                "next": "หน้าถัดไป",
+                "previous": "ก่อนหน้า"
+            },
+        },
+    });
+
+    return datatable;
+} //make_dataTable_byId
 </script>
 
 <!--==========================================================================================================-->
@@ -382,3 +408,7 @@ function convert_date_to_month(date) {
     return month;
 }
 </script>
+
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
