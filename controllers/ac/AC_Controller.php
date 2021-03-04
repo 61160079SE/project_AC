@@ -1,6 +1,5 @@
 <?php
 
-
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 } //if
@@ -10,7 +9,6 @@ include 'application/controllers/Main_Controller.php';
 class AC_controller extends Main_Controller
 {
     /*=====  contructor  ======*/
-
 
     public function __construct()
     {
@@ -23,7 +21,7 @@ class AC_controller extends Main_Controller
     public function output_md($view, $data = null)
     {
         $this->load->view('template/material_dashboard/header');
-        $this->load->view('template/material_dashboard/ac_header');
+        $this->load->view('template/ac_header');
         $this->load->view('template/material_dashboard/javascript');
         $this->load->view($view, $data);
         $this->load->view('template/material_dashboard/footer');
