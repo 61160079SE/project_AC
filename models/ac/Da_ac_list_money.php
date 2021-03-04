@@ -6,21 +6,21 @@
  * @Create 2564-03-02
  */
 
-include_once 'AC_model.php';
+include_once 'AC_Model.php';
 
-class Da_ac_list_money extends AC_model
+class Da_ac_list_money extends AC_Model
 {
 
     // PK is mt_id
     // FK is -
 
-    public $lm_id ;
+    public $lm_id;
     public $lm_date;
     public $lm_customize_category;
     public $lm_money;
     public $lm_bc_id;
-    public $lm_us_id ;
-    public $lm_mt_id ;
+    public $lm_us_id;
+    public $lm_mt_id;
 
     // =====================================================================================================================
     // =====================================================================================================================
@@ -86,7 +86,7 @@ class Da_ac_list_money extends AC_model
         $sql = "UPDATE {$this->db_name}.ac_list_money
         SET	lm_date =? ,lm_customize_category =?,lm_money =?,lm_bc_id =?,lm_us_id =?,lm_mt_id =?
         WHERE lm_id =?";
-        $this->db->query($sql, array($this->lm_date, $this->lm_customize_category, $this->lm_money, $this->lm_bc_id, $this->lm_us_id, $this->lm_mt_id,$this->lm_id));
+        $this->db->query($sql, array($this->lm_date, $this->lm_customize_category, $this->lm_money, $this->lm_bc_id, $this->lm_us_id, $this->lm_mt_id, $this->lm_id));
 
     } //update
 
@@ -116,6 +116,5 @@ class Da_ac_list_money extends AC_model
     // =====================================================================================================================
     // =====================================================================================================================
     // =====================================================================================================================
-
 
 } //end class Da_ac_list_money
