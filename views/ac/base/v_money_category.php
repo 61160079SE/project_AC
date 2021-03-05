@@ -314,7 +314,7 @@ var gl_count_expense = 0;
         } else {
             $('#table_expense').html(html_code)
             $('#count_expense').html(count_category + '     รายการ')
-            $('#sum_category').html(gl_count_income - count_category + '    รายการ')
+            $('#sum_category').html(gl_count_income + count_category + '    รายการ')
             gl_count_expense = count_category
         };
 
