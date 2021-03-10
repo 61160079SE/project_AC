@@ -44,3 +44,8 @@ $config["ac_daily_detail"] = $config["ac_c_report_folder"] . "Daily_detail/"; //
 
 //ไฟล์ controller ใน folder accounting_data_management
 $config["ac_budget_year_management"] = $config["ac_c_accounting_folder"] . "Budget_year_management/"; //ไฟล์ Budget_year_management
+
+//ไฟล์ controller ใน folder user
+$config["ac_login"] = $config["ac_c_user_folder"] . "Login/"; //ไฟล์ Login
+$config["ac_logout"] = $config["ac_c_user_folder"] . "Logout/"; //ไฟล์ Logout
+$config["ac_register"] = $config["ac_c_user_folder"] . "Register/"; //ไฟล์ Register

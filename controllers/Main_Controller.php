@@ -44,8 +44,66 @@ class Main_Controller extends CI_Controller
         $this->load->view('template/material_kit/footer');
     }
 
+    // =====================================================================================================================
+    // =====================================================================================================================
+
+    /*=====  session  ======*/
+
+    /*
+     * add_session
+     * session ผู้ใช้งานหลังจากเข้าสู่ระบบ
+     * @input -
+     * @output session
+     * @author 61160082 Areerat Pongurai
+     * @Create Date 2564-03-05
+     */
+
+    public function add_session($id, $name)
+    {
+        $this->session->set_userdata("us_id", $id);
+        $this->session->set_userdata("us_name", $name);
+    } // add_session
+
+    /*
+     * get_session
+     * ดึงข้อมูล session
+     * @input -
+     * @output ข้อมูล session
+     * @author 61160082 Areerat Pongurai
+     * @Create Date 2564-03-05
+     */
+
+    public function get_session()
+    {
+        $all_session_values = $this->session->all_userdata();
+        print_r($all_session_values);
+    } // get_session
+
+    /*
+     * remove_session
+     * logout
+     * @input -
+     * @output เอาข้อมูล session ออก
+     * @author 61160082 Areerat Pongurai
+     * @Create Date 2564-03-05
+     */
+
+    public function remove_session()
+    {
+        //$this->session->unset_userdata("__ci_last_regenerate"); //เพิ่มมานะ เพราะตอน add_session มันเพิ่มมาอัตโนมัติ
+        $this->session->unset_userdata("us_id");
+        $this->session->unset_userdata("us_name");
+
+        //$all_session_values = $this->session->all_userdata();
+        // print_r($all_session_values);
+    } // remove_session
+
+    // =====================================================================================================================
+    // =====================================================================================================================
+
     public function test()
     {
-        $this->output_md('test.php');
+        $this->output_mk('test.php');
+        // $this->output_md('test.php');
     }
 } //class Main_Controller
