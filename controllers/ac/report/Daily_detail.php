@@ -2,8 +2,8 @@
 /*
  * Daily_detail
  * controller รายงานผลสรุปปีงบประมาณ
- * @author 61160079 Adithep Phompha
- * @Create Date 2563-12-11
+ * @author 61160195 Supanut Witchatanon
+ * @Create Date 2564-03-02
  */
 
 if (!defined('BASEPATH')) {
@@ -15,7 +15,6 @@ include dirname(__FILE__) . '/../AC_Controller.php';
 class Daily_detail extends AC_Controller
 {
 
-
     /*=====  contructor  ======*/
 
     /*
@@ -23,8 +22,8 @@ class Daily_detail extends AC_Controller
      * -
      * @input -
      * @output -
-     * @author 61160079 Adithep Phompha
-     * @Create Date 2563-12-11
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function __construct()
@@ -43,13 +42,13 @@ class Daily_detail extends AC_Controller
      * ใช้เรียกหน้าจอรายงานผลสรุปปีงบประมาณ
      * @input -
      * @output หน้าจอรายงานผลสรุปปีงบประมาณ
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2563-11-24
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function show_daily_detail()
     {
-        $this->output_md($this->config->item('ac_v_report_folder') . "v_daily_detial");
+        $this->output_md($this->config->item('ac_v_report_folder') . "v_daily_detail");
     } // show_daily_detial
 
     // =====================================================================================================================
@@ -73,18 +72,13 @@ class Daily_detail extends AC_Controller
     public function get_list_money_ajax()
     {
         $this->load->model($this->config->item('ac_m_folder') . 'M_ac_list_money', 'mlm');
-        $this->mlm->lm_us_id = $this->input->post('user_id'); 
-        $this->mlm->lm_date = $this->input->post('date'); 
-        $this->mlm->lm_mt_id  = 1 ;
-        $data["income"]=$this->mlm->get_by_date()->result();
-        $this->mlm->lm_mt_id  = 2 ;
-        $data["expense"]=$this->mlm->get_by_date()->result();
-        if(empty($data["income"])){
-            $data["income"]= "no_data";
-        }
-        if(empty($data["expense"])){
-            $data["expense"]= "no_data";
-        }
+        $this->mlm->lm_us_id = $this->input->post('user_id');
+        $this->mlm->lm_date = $this->input->post('date');
+        $this->mlm->lm_mt_id = 1;
+        $data["income"] = $this->mlm->get_by_date()->result();
+        $this->mlm->lm_mt_id = 2;
+        $data["expense"] = $this->mlm->get_by_date()->result();
+
         echo json_encode($data);
     } // get_list_money
 

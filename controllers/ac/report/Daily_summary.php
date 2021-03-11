@@ -1,9 +1,9 @@
 <?php
 /*
  * Daily_summary
- * controller รายงานผลสรุปปีงบประมาณ
- * @author 61160079 Adithep Phompha
- * @Create Date 2563-12-11
+ * controller ผลสรุปรายวัน
+ * @author 61160195 Supanut Witchatanon
+ * @Create Date 2564-03-02
  */
 
 if (!defined('BASEPATH')) {
@@ -15,7 +15,6 @@ include dirname(__FILE__) . '/../AC_Controller.php';
 class Daily_summary extends AC_Controller
 {
 
-
     /*=====  contructor  ======*/
 
     /*
@@ -23,8 +22,8 @@ class Daily_summary extends AC_Controller
      * -
      * @input -
      * @output -
-     * @author 61160079 Adithep Phompha
-     * @Create Date 2563-12-11
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function __construct()
@@ -43,8 +42,8 @@ class Daily_summary extends AC_Controller
      * ใช้เรียกหน้าจอรายงานผลสรุปปีงบประมาณ
      * @input -
      * @output หน้าจอรายงานผลสรุปปีงบประมาณ
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2563-11-24
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function show_daily_summary()
@@ -55,7 +54,7 @@ class Daily_summary extends AC_Controller
     // =====================================================================================================================
     // =====================================================================================================================
     // =====================================================================================================================
- /*
+    /*
      * get_daily_money_ajax
      * ดึงข้อมูลรายการเงิน
      * @input -
@@ -70,12 +69,10 @@ class Daily_summary extends AC_Controller
         $this->mdm->dm_us_id = $this->input->post('user_id');
         $this->mdm->year = $this->input->post('year');
         $this->mdm->month = $this->input->post('month');
-        
+
         $data["daily_money"] = $this->mdm->get_daily()->result();
-        if (empty($data["daily_money"])) {
-            $data["daily_money"] = "no_data";
-        }
+
         echo json_encode($data);
-    } // get_daily_money
+    } // get_daily_money_ajax
 
 } //end class Daily_summary

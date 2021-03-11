@@ -1,22 +1,69 @@
-<div class="card">
-    <div class="card-header card-header-icon card-header-primary">
-        <div class="card-icon">
-            <i class="material-icons">assignment</i>
+<!-- /*
+ * v_daily_summary
+ * ดูผลสรุปรายวัน
+ * @author 61160077 Siripoon Yimthanom
+ * @Create 2564-03-02
+ */ -->
 
-        </div>
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
 
-        <h3 class="card-title ">
-            <span id="table_name">ตารางสรุปผล (รายวัน) : ปี พ.ศ. 2564 เดือน มกราคม</span><br>
 
-        </h3>
-        <h4 class="card-title ">
-            <text style="float:right;"> ยอดเงินคงเหลือเดือน (ธันวาคม) : 2000 บาท </text>
-        </h4>
+<!--  navigator  -->
+
+<div class="card-body">
+    <div class="bd-example">
+        <nav style='margin-bottom: -2rem;'>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" style="position">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_controller') ?>show_homepage">
+                        <span class="material-icons">home</span> หน้าแรกของระบบ
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_year_summary') ?>show_year_summary">
+                        สรุปผลทางบัญชีรายปี
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_month_summary') ?>show_month_summary">
+                        สรุปผลทางบัญชีรายเดือน
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    สรุปผลทางบัญชีรายวัน
+                </li>
+            </ol>
+        </nav>
     </div>
-    <div class="card-body">
-        <div id="table_month">
-            <div id="table_daily" style="margin-top: 20px; margin-bottom: 20px;">
+</div>
 
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-icon card-header-primary">
+            <div class="card-icon">
+                <i class="material-icons">assignment</i>
+
+            </div>
+
+            <h3 class="card-title ">
+                <span id="table_name">ตาราง สรุปผลทางบัญชีรายวัน เดือนมกราคม ประจำปี พ.ศ.2564 </span><br>
+
+            </h3>
+            <!-- <h4 class="card-title ">
+                  <text style="float:right;"> ยอดเงินคงเหลือเดือน (ธันวาคม) : 2000 บาท </text>
+            </h4> -->
+        </div>
+        <div class="card-body">
+            <div id="table_month">
+                <div id="table_daily" style="margin-top: 20px; margin-bottom: 20px;">
+
+                </div>
             </div>
         </div>
     </div>
@@ -77,6 +124,7 @@ function create_table(daily_money) {
     html_code += ' </tr>';
     html_code += ' </thead>';
     html_code += ' <tbody>';
+
     $.each(daily_money, function(index, val) {
         let remaining_buget = val.sum_income - val.sum_expense;
         let arr_date = val.dm_date.split("-");
@@ -101,5 +149,5 @@ function create_table(daily_money) {
 
     $('#table_daily').html(html_code);
     make_dataTable_byId('datatable_daily');
-}
+} //end create_table
 </script>
