@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['us_id'])) {
+    $view_path = site_url() . "/" . $this->config->item('ac_controller') . "show_homepage";
+    header("Location: " . $view_path);
+} //if
+?>
+
 <body class="login-page sidebar-collapse">
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
         <div class="container">

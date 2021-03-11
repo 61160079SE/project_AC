@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['us_id'])) {
+    $view_path = site_url() . "/" . $this->config->item('ac_login') . "show_login";
+    header("Location: " . $view_path);
+} //if
+?>
+
 <title> ระบบบัญชีรายรับ - รายจ่าย </title>
 <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container">

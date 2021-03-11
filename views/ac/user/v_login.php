@@ -9,6 +9,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
+<?php
+session_start();
+if (isset($_SESSION['us_id'])) {
+    $view_path = site_url() . "/" . $this->config->item('ac_controller') . "show_homepage";
+    header("Location: " . $view_path);
+} //if
+?>
 
 <body class="login-page sidebar-collapse">
 
