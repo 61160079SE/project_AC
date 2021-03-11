@@ -2,8 +2,8 @@
 /*
  * M_ac_money_category
  * จัดการข้อมูลในตาราง ac_list_money
- * @author 61160194 Wuttichai Chaiwanna
- * @Create Date 2564-03-05
+ * @author 61160173 Jirawat yuenkaew
+ * @Create 2564-03-02
  */
 
 include_once "Da_ac_money_category.php";
@@ -53,10 +53,10 @@ class M_ac_money_category extends Da_ac_money_category
     /*
      * check_if_name_exist
      * Insert ตรวจสอบว่าชื่อหมวดเงินที่ถูกส่งมา มีอยู่ใน level_1 ตารางหรือไม่
-     * @input bc_mt_id, bc_name
+     * @input mc_mt_id, mc_name
      * @output 0 หรือมากกว่า 0 (0 = ไม่มี, มากกว่า 0 = มี)
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-05
+     * @author 61160079 Adithep Phompha
+     * @Create Date 2563-08-25
      */
 
     public function check_if_name_exist()
