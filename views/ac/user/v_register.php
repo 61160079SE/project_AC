@@ -1,4 +1,10 @@
 <?php
+/*
+ * v_register
+ * หน้าจอลงทะเบียน
+ * @author 61160082 Areerat Pongurai
+ * @Create Date 2564-03-04
+ */
 session_start();
 if (isset($_SESSION['us_id'])) {
     $view_path = site_url() . "/" . $this->config->item('ac_controller') . "show_homepage";
