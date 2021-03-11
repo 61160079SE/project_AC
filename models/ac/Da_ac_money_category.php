@@ -1,20 +1,20 @@
 <?php
 /*
  * Da_ac_money_category
- * 
- * @author 
- * @Create 
+ *
+ * @author 61160194 Wuttichai Chaiwanna
+ * @Create Date 2564-03-02
  */
 
-include_once 'AC_model.php';
+include_once 'AC_Model.php';
 
-class Da_ac_money_category extends AC_model
+class Da_ac_money_category extends AC_Model
 {
     public $bc_id;
     public $bc_name;
     public $bc_mt_id;
     public $bc_us_id;
-    
+
     // =====================================================================================================================
     // =====================================================================================================================
     // =====================================================================================================================
@@ -26,8 +26,8 @@ class Da_ac_money_category extends AC_model
      * -
      * @input -
      * @output -
-     * @author 
-     * @Create Date 
+     * @author 61160194 Wuttichai Chaiwanna
+     * @Create Date 2564-03-02
      */
 
     public function __construct()
@@ -44,17 +44,17 @@ class Da_ac_money_category extends AC_model
     /*
      * insert
      * เพิ่มข้อมูล 1 record ในตาราง
-     * @input 
+     * @input bc_name,bc_mt_id,bc_us_id
      * @output -
-     * @author 
-     * @Create Date 
+     * @author 61160194 Wuttichai Chaiwanna
+     * @Create Date 2564-03-02
      */
 
     public function insert()
     {
-        $sql = "INSERT INTO {$this->db_name}.ac_base_category ( bc_id,bc_name,bc_mt_id,bc_us_id)
-                VALUES(?,?,?,?)";
-        $this->db->query($sql, array($this->bc_id, $this->bc_name, $this->bc_mt_id, $this->bc_us_id));
+        $sql = "INSERT INTO {$this->db_name}.ac_base_category (bc_name,bc_mt_id,bc_us_id)
+                VALUES(?,?,?)";
+        $this->db->query($sql, array($this->bc_name, $this->bc_mt_id, $this->bc_us_id));
     } //insert
 
 // =====================================================================================================================
@@ -66,16 +66,16 @@ class Da_ac_money_category extends AC_model
     /*
      * update
      * แก้ไขข้อมูลในตารางทั้ง record โดยอ้างอิงจาก id
-     * @input 
+     * @input bc_name,bc_mt_id,bc_us_id, bc_id
      * @output -
-     * @author 
-     * @Create Date 
+     * @author 61160194 Wuttichai Chaiwanna
+     * @Create Date 2564-03-02
      */
 
     public function update()
     {
         $sql = "UPDATE {$this->db_name}.ac_base_category
-        SET	bc_name =?,bc_mt_id =?, bc_us_id =?
+        SET bc_name =?,bc_mt_id =?, bc_us_id =?
         WHERE bc_id =?";
         $this->db->query($sql, array($this->bc_name, $this->bc_mt_id, $this->bc_us_id, $this->bc_id));
     } //update
@@ -85,10 +85,10 @@ class Da_ac_money_category extends AC_model
     /*
      * delete
      * ลบข้อมูล 1 record ในตารางโดยอ้างอิงจาก id
-     * @input 
+     * @input bc_id
      * @output -
-     * @author 
-     * @Create Date 
+     * @author 61160194 Wuttichai Chaiwanna
+     * @Create Date 2564-03-02
      */
 
     public function delete()
