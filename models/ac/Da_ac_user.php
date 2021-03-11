@@ -1,9 +1,9 @@
 <?php
 /*
- * Da_ac_daily_money
- * จัดการข้อมูลในตาราง acr_money_type (ที่เกี่ยวกับ insert update และ delete)
- * @author 61160182 Nawarut Nambunsri
- * @Create 2564-03-02
+ * Da_ac_user
+ * จัดการข้อมูลในตาราง ac_user (ที่เกี่ยวกับ insert update และ delete)
+ * @author 61160082 Areerat Pongurai
+ * @Create 2564-03-04
  */
 
 include_once 'AC_Model.php';
@@ -11,15 +11,13 @@ include_once 'AC_Model.php';
 class Da_ac_user extends AC_Model
 {
 
-    // PK is 
+    // PK is ud_id
     // FK is -
 
-    
+    public $us_id;
     public $us_name;
     public $us_pass;
-    public $us_email;
     public $us_last_login;
-
 
     // =====================================================================================================================
     // =====================================================================================================================
@@ -32,8 +30,8 @@ class Da_ac_user extends AC_Model
      * -
      * @input -
      * @output -
-     * @author 61160182 Nawarut Nambunsri
-     * @Create Date 2564-03-02
+     * @author 61160082 Areerat Pongurai
+     * @Create Date 2564-03-04
      */
 
     public function __construct()
@@ -50,41 +48,66 @@ class Da_ac_user extends AC_Model
     /*
      * insert
      * เพิ่มข้อมูล 1 record ในตาราง
-     * @input dm_id,dm_date,dm_sum_income, dm_sum_expense,dm_us_id
+     * @input ud_id,us_name,us_pass, us_last_login
      * @output -
-     * @author 61160182 Nawarut Nambunsri
-     * @Create Date 2564-03-02
+     * @author 61160082 Areerat Pongurai
+     * @Create Date 2564-03-04
      */
-
-
 
     public function insert()
     {
-        $sql = "INSERT INTO {$this->db_name}.ac_user ( us_name,us_pass,us_email)
-                VALUES(?,?,?)";
-        $this->db->query($sql, array($this->us_name, $this->us_pass,$this->us_email));
+        $sql = "INSERT INTO {$this->db_name}.ac_user (us_name,us_pass)
+                VALUES(?,?)";
+        $this->db->query($sql, array($this->us_name, $this->us_pass));
     } //insert
 
+    // =====================================================================================================================
+    // =====================================================================================================================
+    // =====================================================================================================================
 
- 
+    /*=====  update  =====*/
 
-public function check_if_us_name_exist()
-{
-    $sql = "SELECT COUNT(1) AS exist
-            FROM {$this->db_name}.ac_user
-            WHERE us_name = ? ";
-    $query = $this->db->query($sql, array($this->us_name));
-    return $query;
-} // check_if_mc_name_exist
+    /*
+     * update
+     * แก้ไขข้อมูลในตารางทั้ง record โดยอ้างอิงจาก id
+     * @input ud_id,us_name,us_pass, us_last_login, us_id
+     * @output -
+     * @author 61160082 Areerat Pongurai
+     * @Create Date 2564-03-04
+     */
 
-   
-// public function get_all()
-// {
-//     $sql = "SELECT *
-//             FROM {$this->db_name}.ac_user";
-//     $query = $this->db->query($sql);
-//     return $query;
-// } //get_all
+    public function update()
+    {
+        $sql = "UPDATE {$this->db_name}.ac_user
+        SET	us_name =?,us_pass =?
+        WHERE us_id =?";
+        $this->db->query($sql, array($this->us_name, $this->us_pass, $this->us_id));
+    } //update
 
+    // =====================================================================================================================
+    // =====================================================================================================================
+    // =====================================================================================================================
 
-} //end class Da_ac_list_money
+    /*=====  delete  =====*/
+
+    /*
+     * delete
+     * ลบข้อมูล 1 record ในตารางโดยอ้างอิงจาก id
+     * @input us_id
+     * @output -
+     * @author 61160082 Areerat Pongurai
+     * @Create Date 2564-03-04
+     */
+
+    public function delete()
+    {
+        $sql = "DELETE FROM {$this->db_name}.ac_user
+        WHERE us_id=?";
+        $this->db->query($sql, array($this->us_id));
+    } //delete
+
+    // =====================================================================================================================
+    // =====================================================================================================================
+    // =====================================================================================================================
+
+} //end class Da_ac_user
