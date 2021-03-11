@@ -6,44 +6,77 @@
  * @Create Date 2564-03-02
  */
 ?>
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
 
-<div class="card">
-    <div class="card-header card-header-icon card-header-primary">
-        <div class="card-icon">
-            <i class="material-icons">assignment</i>
-        </div>
 
-        <h3 class="card-title ">
-            <span id="table_name">ตารางสรุปผล (รายเดือน) : ปี 2564</span>
+<!--  navigator  -->
 
-        </h3>
-
+<div class="card-body">
+    <div class="bd-example">
+        <nav style='margin-bottom: -2rem;'>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" style="position">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_controller') ?>show_homepage">
+                        <span class="material-icons">home</span> หน้าแรกของระบบ
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_year_summary') ?>show_year_summary">
+                        สรุปผลทางบัญชีรายปี
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    สรุปผลทางบัญชีรายเดือน
+                </li>
+            </ol>
+        </nav>
     </div>
-    <div class="card-body">
+</div>
 
-        <div id="table_month">
-            <div style="margin-top: 20px; margin-bottom: 20px;">
-                <table class="table table-striped table-color-header table-hover table-border" cellspacing="0" width="100%" style="width:100%">
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
 
-                    <thead class=" text-primary">
-                        <tr>
-                            <th class="head_color" style="text-align : center">ลำดับ</th>
-                            <th class="head_color" style="text-align : center">เดือน</th>
-                            <th class="head_color" style="text-align : center">รายรับ (บาท)</th>
-                            <th class="head_color" style="text-align : center">รายจ่าย (บาท)</th>
-                            <th class="head_color" style="text-align : center">คงเหลือ (บาท)</th>
-                            <th class="head_color" style="text-align : center">ดำเนินการ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-icon card-header-primary">
+            <div class="card-icon">
+                <i class="material-icons">assignment</i>
+            </div>
 
-                    </tbody>
+            <h3 class="card-title ">
+                <span id="table_name"> สรุปผลทางบัญชีรายเดือน ประจำปี พ.ศ.2564</span>
 
-                </table>
+            </h3>
+
+        </div>
+        <div class="card-body">
+
+            <div id="table_month">
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <table class="table table-striped table-color-header table-hover table-border" id="datatable_month" cellspacing="0" width="100%" style="width:100%">
+
+                        <thead class=" text-primary">
+                            <tr>
+                                <th class="head_color" style="text-align : center">ลำดับ</th>
+                                <th class="head_color" style="text-align : center">เดือน</th>
+                                <th class="head_color" style="text-align : center">รายรับ (บาท)</th>
+                                <th class="head_color" style="text-align : center">รายจ่าย (บาท)</th>
+                                <th class="head_color" style="text-align : center">คงเหลือ (บาท)</th>
+                                <th class="head_color" style="text-align : center">ดำเนินการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <script>
@@ -52,7 +85,7 @@ $(document).ready(function() {
 });
 /*
  * get_month_money
- * ดึงข้อมูลรายการเงิน
+ * ดึงข้อมูลเงินรานเดือน
  * @input -
  * @output -
  * @author 61160182 Nawarut Nambunsri
@@ -72,7 +105,7 @@ function get_month_money() {
             create_table(json_data["month_money"]);
         }
     }); //ajax
-}
+} //function get_month_money
 
 
 /*
@@ -102,6 +135,8 @@ function create_table(month_money) {
         html_table += '</td>'
         html_table += '</tr>'
     });
-    $('#table_month tbody').html(html_table)
+    $('#table_month tbody').html(html_table);
+    make_dataTable_byId('datatable_month');
+
 } //create_table
 </script>

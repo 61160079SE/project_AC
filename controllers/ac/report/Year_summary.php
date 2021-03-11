@@ -3,7 +3,7 @@
  * Year_summary
  * controller รายงานผลสรุปปีงบประมาณ
  * @author 61160079 Adithep Phompha
- * @Create Date 2563-12-11
+ * @Create Date 2564-03-02
  */
 
 if (!defined('BASEPATH')) {
@@ -15,7 +15,6 @@ include dirname(__FILE__) . '/../AC_Controller.php';
 class Year_summary extends AC_Controller
 {
 
-
     /*=====  contructor  ======*/
 
     /*
@@ -23,14 +22,13 @@ class Year_summary extends AC_Controller
      * -
      * @input -
      * @output -
-     * @author 61160079 Adithep Phompha
-     * @Create Date 2563-12-11
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function __construct()
     {
         parent::__construct();
-
     } //__construct
 
     // =====================================================================================================================
@@ -43,8 +41,8 @@ class Year_summary extends AC_Controller
      * ใช้เรียกหน้าจอรายงานผลสรุปปีงบประมาณ
      * @input -
      * @output หน้าจอรายงานผลสรุปปีงบประมาณ
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2563-11-24
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function show_year_summary()
@@ -66,9 +64,7 @@ class Year_summary extends AC_Controller
         $this->load->model($this->config->item('ac_m_folder') . 'M_ac_daily_money', 'mdm');
         $this->mdm->dm_us_id = $this->input->post('user_id');
         $data["year_money"] = $this->mdm->get_by_year()->result();
-        if (empty($data["year_money"])) {
-            $data["year_money"] = "no_data";
-        }
+
         echo json_encode($data);
     } // get_year_money_ajax
 

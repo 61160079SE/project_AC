@@ -15,7 +15,6 @@ include dirname(__FILE__) . '/../AC_Controller.php';
 class Month_summary extends AC_Controller
 {
 
-
     /*=====  contructor  ======*/
 
     /*
@@ -23,7 +22,7 @@ class Month_summary extends AC_Controller
      * -
      * @input -
      * @output -
-     * @author 61160182 Nawarut Nambunsri
+     * @author 61160195 Supanut Witchatanon
      * @Create Date 2564-03-02
      */
 
@@ -42,7 +41,7 @@ class Month_summary extends AC_Controller
      * ใช้เรียกหน้าจอสรุปผลรายเดือน
      * @input -
      * @output หน้าจอสรุปผลรายเดือน
-     * @author 61160182 Nawarut Nambunsri
+     * @author 61160195 Supanut Witchatanon
      * @Create Date 2564-03-02
      */
 
@@ -58,9 +57,9 @@ class Month_summary extends AC_Controller
 
     /*
      * get_month_money_ajax
-     * ดึงข้อมูลรายการเงิน
+     * ดึงข้อมูลเงินรายเดือน
      * @input -
-     * @output หน้าจอแสดงรายละเอียดรายวัน
+     * @output หน้าจอแสดงรายละเอียดรายเดือน
      * @author 61160182 Nawarut Nambunsri
      * @Create Date 2564-03-02
      */
@@ -71,11 +70,9 @@ class Month_summary extends AC_Controller
         $this->mdm->dm_us_id = $this->input->post('user_id');
         $this->mdm->year = $this->input->post('year');
         $data["month_money"] = $this->mdm->get_month()->result();
-        if (empty($data["month_money"])) {
-            $data["month_money"] = "no_data";
-        }
+
         echo json_encode($data);
-    } // get_daily_money
+    } //get_month_money_ajax
 
     // =====================================================================================================================
     // =====================================================================================================================
