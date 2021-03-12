@@ -76,12 +76,20 @@ $(document).ready(function() {
  * @author 60160341 Preeyanut Boonmeemak
  * @Create Date 2564-03-02
  */
+ /*
+ * get_year_money
+ * ดึงข้อมูลเงินรายปี
+ * @input -
+ * @output -
+ * @author 61160082 Areerat Pongurai
+ * @Update Date 2564-03-12
+ */
 function get_year_money() {
     $.ajax({
         type: "post",
         url: "<?php echo site_url() . "/" . $this->config->item('ac_year_summary') ?>get_year_money_ajax",
         data: {
-            'user_id': 1
+            'user_id': <?php echo $_SESSION['us_id']; ?>
         },
         dataType: "JSON",
         success: function(json_data) {
@@ -98,6 +106,14 @@ function get_year_money() {
  * @author 60160341 Preeyanut Boonmeemak
  * @Create Date 2564-03-02
  */
+ /*
+ * create_table
+ * สร้างตารางสรุปผลรายปี
+ * @input -
+ * @output หน้าจอสรุปผลรายปี
+ * @author 61160082 Areerat Pongurai
+ * @Update Date 2564-03-12
+ */
 function create_table(data) {
     let html_table = ''
 
@@ -109,7 +125,7 @@ function create_table(data) {
         html_table += '<td class="text-right">' + formatNumber(val.sum_expense) + '</td>'
         html_table += '<td class="text-right">' + formatNumber(val.sum_income - val.sum_expense) + '</td>'
         html_table += '<td class="text-center">'
-        html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_month_summary") ?>show_month_summary">'
+        html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_month_summary") ?>show_month_summary/' + (parseInt(val.sum_year)) + '">'
         html_table += '<button class="btn btn-primary acr_button" style="margin:5px;">'
         html_table += '<i class="material-icons">search</i>'
         html_table += '</button>'
@@ -118,10 +134,8 @@ function create_table(data) {
         html_table += '</tr>'
     });
 
-
-
     $('#table-summary-year tbody').html(html_table)
     make_dataTable_byId('table-summary-year')
 
-} // function create_table 
+} // function create_table
 </script>

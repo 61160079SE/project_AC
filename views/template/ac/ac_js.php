@@ -87,6 +87,48 @@ function convert_date_to_month(date) {
 // ==========================================================================================================
 // ==========================================================================================================
 
+/*
+ *convert_month
+ *แปลง  date เป็น เดือน
+ *@input id name
+ *@output show datatable aos style
+ *@author Areerat
+ *@Create Date 2564-03-12
+ *Original Nutchapon
+ */
+
+
+function convert_month(month_number) {
+    if (month_number == "01") {
+        month = "มกราคม";
+    } else if (month_number == "02") {
+        month = "กุมภาพันธ์";
+    } else if (month_number == "03") {
+        month = "มีนาคม";
+    } else if (month_number == "04") {
+        month = "เมษายม";
+    } else if (month_number == "05") {
+        month = "พฤษภาคม";
+    } else if (month_number == "06") {
+        month = "มิถุนายน";
+    } else if (month_number == "07") {
+        month = "กรกฎาคม";
+    } else if (month_number == "08") {
+        month = "สิงหาคม";
+    } else if (month_number == "09") {
+        month = "กันยายน";
+    } else if (month_number == "10") {
+        month = "ตุลาคม";
+    } else if (month_number == "11") {
+        month = "พฤษจิกายน";
+    } else if (month_number == "12") {
+        month = "ธันวาคม";
+    }
+    return month;
+}
+// ==========================================================================================================
+// ==========================================================================================================
+// ==========================================================================================================
 
 /*
  *make_dataTable_byId

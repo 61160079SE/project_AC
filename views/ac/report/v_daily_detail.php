@@ -7,10 +7,12 @@
  */
 ?>
 
-
+<input type="hidden" id="date" value="<?php echo $date; ?>">
 <script>
 var gl_sum_income = 0;
 var gl_sum_expense = 0;
+
+var gl_date = $("#date").val(); //ปี-เดือน-วัน
 </script>
 
 <!-- ========================================================================================================== -->
@@ -61,9 +63,7 @@ var gl_sum_expense = 0;
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-body">
-                    วันเดือนปี
-                </div>
+                <div class="card-body" id="date_name"></div>
             </div>
         </div>
         <div class="col-md-6">
@@ -154,22 +154,30 @@ $(document).ready(function() {
  * @author 61160173 Jirawat yuenkaew
  * @Create Date 2564-03-02
  */
+/*
+ * get_list_money
+ * ดึงข้อมูลรายการเงิน
+ * @input -
+ * @output -
+ * @author 61160082 Areerat Pongurai
+ * @Update Date 2564-03-12
+ */
 function get_list_money() {
     $.ajax({
         type: "post",
         url: "<?php echo site_url() . "/" . $this->config->item('ac_daily_detail') ?>get_list_money_ajax",
         data: {
-            'date': "2564-01-12",
-            'user_id': 1
+            'date': gl_date,
+            'user_id': <?php echo $_SESSION['us_id']; ?>
         },
         dataType: "JSON",
         success: function(json_data) {
-            console.log(json_data);
+            // console.log(json_data);
             create_table(1, json_data["income"]);
             create_table(2, json_data["expense"]);
         }
     }); //ajax
-}
+} //get_list_money
 
 // =====================================================================================================================
 // =====================================================================================================================
@@ -181,6 +189,15 @@ function get_list_money() {
  * @output -
  * @author 61160173 Jirawat yuenkaew
  * @Create Date 2564-03-02
+ */
+
+/*
+ * create_table
+ * สร้างตาราง
+ * @input money_type
+ * @output -
+ * @author 61160082 Areerat Pongurai
+ * @Update Date 2564-03-12
  */
 function create_table(money_type, money_data) {
     let html_code = "";
@@ -244,6 +261,8 @@ function create_table(money_type, money_data) {
         gl_sum_expense = sum_money;
     };
 
+    let arr_date = gl_date.split("-");
+    $('#date_name').html("วันที่ " + (parseInt(arr_date[2])) + " เดือน " + convert_month(arr_date[1]) + " พ.ศ." + arr_date[0]);
 } //create_table
 // end v_daily_detail
 </script>

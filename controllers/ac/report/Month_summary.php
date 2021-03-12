@@ -44,10 +44,19 @@ class Month_summary extends AC_Controller
      * @author 61160195 Supanut Witchatanon
      * @Create Date 2564-03-02
      */
+    /*
+     * show_month_summary
+     * ใช้เรียกหน้าจอสรุปผลรายเดือน
+     * @input $year
+     * @output หน้าจอสรุปผลรายเดือน
+     * @author 61160082 Areerat Pongurai
+     * @Update Date 2564-03-12
+     */
 
-    public function show_month_summary()
+    public function show_month_summary($year)
     {
-        $this->output_md($this->config->item('ac_v_report_folder') . "v_month_summary");
+        $data['year']=$year;
+        $this->output_md($this->config->item('ac_v_report_folder') . "v_month_summary", $data);
     } // show_month_summary
 
     // =====================================================================================================================

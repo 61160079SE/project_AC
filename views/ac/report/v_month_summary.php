@@ -6,10 +6,15 @@
  * @Create Date 2564-03-02
  */
 ?>
-<!-- ========================================================================================================== -->
-<!-- ========================================================================================================== -->
-<!-- ========================================================================================================== -->
 
+<input type="hidden" id="year" value="<?php echo $year; ?>">
+<script>
+var gl_year = $("#year").val(); //ปี
+</script>
+
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
+<!-- ========================================================================================================== -->
 
 <!--  navigator  -->
 
@@ -47,7 +52,7 @@
             </div>
 
             <h3 class="card-title ">
-                <span id="table_name"> สรุปผลทางบัญชีรายเดือน ประจำปี พ.ศ.2564</span>
+                <span id="table_name"></span>
 
             </h3>
 
@@ -85,23 +90,31 @@ $(document).ready(function() {
 });
 /*
  * get_month_money
- * ดึงข้อมูลเงินรานเดือน
+ * ดึงข้อมูลเงินรายเดือน
  * @input -
  * @output -
  * @author 61160182 Nawarut Nambunsri
  * @Create Date 2564-03-02
+ */
+/*
+ * get_month_money
+ * ดึงข้อมูลเงินรายเดือน
+ * @input -
+ * @output -
+ * @author 61160082 Areerat Pongurai
+ * @Update Date 2564-03-12
  */
 function get_month_money() {
     $.ajax({
         type: "post",
         url: "<?php echo site_url() . "/" . $this->config->item('ac_month_summary') ?>get_month_money_ajax",
         data: {
-            'year': 2564,
-            'user_id': 1
+            'year': gl_year,
+            'user_id': <?php echo $_SESSION['us_id']; ?>
         },
         dataType: "JSON",
         success: function(json_data) {
-            console.log(json_data);
+            // console.log(json_data);
             create_table(json_data["month_money"]);
         }
     }); //ajax
@@ -116,10 +129,20 @@ function get_month_money() {
  * @author 61160182 Nawarut Nambunsri
  * @Create Date 2564-03-02
  */
+/*
+ * create_table
+ * สร้างตารางสรุปผลรายเดือน
+ * @input -
+ * @output หน้าจอสรุปผลรายเดือน
+ * @author 61160082 Areerat Pongurai
+ * @Update Date 2564-03-12
+ */
 function create_table(month_money) {
     let html_table = ""
     $.each(month_money, function(index, val) {
         let remaining_buget = val.sum_income - val.sum_expense;
+        let arr_date = val.dm_date.split("-");
+        let month_number = arr_date[1];
         html_table += '<tr>'
         html_table += '<td class="text-center">' + (index + 1) + '</td>'
         html_table += '<td class="text-left">' + convert_date_to_month(val.dm_date) + '</td>'
@@ -127,7 +150,7 @@ function create_table(month_money) {
         html_table += '<td class="text-right">' + formatNumber(val.sum_expense) + '</td>'
         html_table += '<td class="text-right">' + formatNumber(remaining_buget) + '</td>'
         html_table += '<td class="text-center">'
-        html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_daily_summary") ?>show_daily_summary">'
+        html_table += '<a href="<?php echo site_url() . "/" . $this->config->item("ac_daily_summary") ?>show_daily_summary/' + gl_year + '/' + month_number + '">'
         html_table += '<button class="btn btn-primary acr_button" style="margin:5px;">'
         html_table += '<i class="material-icons">search</i>'
         html_table += '</button>'
@@ -136,6 +159,7 @@ function create_table(month_money) {
         html_table += '</tr>'
     });
     $('#table_month tbody').html(html_table);
+    $('#table_name').html("ตารางสรุปผลทางบัญชีรายเดือน ประจำปี พ.ศ." + gl_year);
     make_dataTable_byId('datatable_month');
 
 } //create_table

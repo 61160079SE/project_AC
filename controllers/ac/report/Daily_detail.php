@@ -46,9 +46,19 @@ class Daily_detail extends AC_Controller
      * @Create Date 2564-03-02
      */
 
-    public function show_daily_detail()
+    /*
+     * show_daily_detial
+     * ใช้เรียกหน้าจอรายงานผลสรุปปีงบประมาณ
+     * @input $date
+     * @output หน้าจอรายงานผลสรุปปีงบประมาณ
+     * @author 61160082 Areerat Pongurai
+     * @Update Date 2564-03-12
+     */
+
+    public function show_daily_detail($date)
     {
-        $this->output_md($this->config->item('ac_v_report_folder') . "v_daily_detail");
+        $data['date'] = $date;
+        $this->output_md($this->config->item('ac_v_report_folder') . "v_daily_detail", $data);
     } // show_daily_detial
 
     // =====================================================================================================================
