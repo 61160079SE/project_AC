@@ -8,6 +8,7 @@
 ?>
 
 <input type="hidden" id="date" value="<?php echo $date; ?>">
+<?php $arr_date = explode('-', $date)?>
 <script>
 var gl_sum_income = 0;
 var gl_sum_expense = 0;
@@ -37,12 +38,12 @@ var gl_date = $("#date").val(); //ปี-เดือน-วัน
                     </a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_month_summary') ?>show_month_summary">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_month_summary') ?>show_month_summary/<?php echo $arr_date[0]; ?>">
                         สรุปผลทางบัญชีรายเดือน
                     </a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_daily_summary') ?>show_daily_summary">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_daily_summary') ?>show_daily_summary/<?php echo $arr_date[0]; ?>/<?php echo $arr_date[1]; ?>">
                         สรุปผลทางบัญชีรายวัน
                     </a>
                 </li>

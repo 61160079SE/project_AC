@@ -33,7 +33,7 @@ var gl_month = $("#month").val(); //เดือน
                     </a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_month_summary') ?>show_month_summary">
+                    <a href="<?php echo site_url() . "/" . $this->config->item('ac_month_summary') ?>show_month_summary/<?php echo $year; ?>">
                         สรุปผลทางบัญชีรายเดือน
                     </a>
                 </li>
