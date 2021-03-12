@@ -56,7 +56,7 @@ class M_ac_money_category extends Da_ac_money_category
      * @input mc_mt_id, mc_name
      * @output 0 หรือมากกว่า 0 (0 = ไม่มี, มากกว่า 0 = มี)
      * @author 61160079 Adithep Phompha
-     * @Create Date 2563-08-25
+     * @Create Date 2564-03-04
      */
 
     public function check_if_name_exist()
