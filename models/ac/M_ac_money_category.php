@@ -17,8 +17,8 @@ class M_ac_money_category extends Da_ac_money_category
      * ดึงข้อมูลทั้งหมดในตารางออกมา
      * @input -
      * @output 
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-02
+     * @author 
+     * @Create Date 
      */
 
     public function get_all()
@@ -34,8 +34,8 @@ class M_ac_money_category extends Da_ac_money_category
      * 
      * @input -
      * @output 
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-02
+     * @author 
+     * @Create Date 
      */
 
     public function get_by_type()
@@ -50,13 +50,35 @@ class M_ac_money_category extends Da_ac_money_category
         return $query;
     } //get_by_type
 
+
+     /*
+     * get_by_type_and_user
+     * 
+     * @input -
+     * @output 
+     * @author 
+     * @Create Date 
+     */
+
+    public function get_by_type_and_user()
+    {
+        $sql = "SELECT bc_id,bc_name,bc_mt_id,bc_us_id,mt_id,mt_name
+				FROM {$this->db_name}.ac_base_category 
+        LEFT JOIN {$this->db_name}.ac_money_type
+          ON bc_mt_id = mt_id
+        WHERE bc_mt_id = ? AND  bc_us_id = ?
+        ORDER BY bc_id DESC";
+        $query = $this->db->query($sql, array($this->bc_mt_id, $this->bc_us_id));
+        return $query;
+    } //get_by_type
+
     /*
      * check_if_name_exist
      * Insert ตรวจสอบว่าชื่อหมวดเงินที่ถูกส่งมา มีอยู่ใน level_1 ตารางหรือไม่
-     * @input bc_name, bc_mt_id
+     * @input mc_mt_id, mc_name
      * @output 0 หรือมากกว่า 0 (0 = ไม่มี, มากกว่า 0 = มี)
      * @author 61160079 Adithep Phompha
-     * @Create Date 2564-03-04
+     * @Create Date 2563-08-25
      */
 
     public function check_if_name_exist()

@@ -306,9 +306,7 @@ function create_table(money_type, money_data) {
     } //else
 
 
-    if (money_data == "no_data") {
-        html_code += 'ไม่มีข้อมูล ';
-    } else {
+ 
         html_code += '<table id = "datatable_' + money_type_name + '" class="table table-striped table-color-header table-hover table-border" cellspacing="0" width="100%" style="width:100%">';
         html_code += '   <thead class=" text-primary">';
         html_code += '     <tr>'
@@ -343,7 +341,7 @@ function create_table(money_type, money_data) {
         }); //foreach
         html_code += '</tbody>';
         html_code += '</table>';
-    }
+    
     if (money_type == 1) {
         $('#table_income').html(html_code)
         make_dataTable_byId('datatable_' + money_type_name)
@@ -412,7 +410,7 @@ function insert_main_category() {
 
                 'bc_name_m': bc_name_m,
                 'bc_mt_id': bc_mt_id,
-                'bc_us_id': 1
+                'bc_us_id': <?php echo $this->session->userdata('us_id'); ?>
             },
             dataType: "JSON",
             success: function(data) {
@@ -529,7 +527,7 @@ function update_main_category() {
                 'bc_id_edit': bc_id_edit,
                 'bc_name_edit': bc_name_edit,
                 'bc_mt_id': bc_mt_id,
-                'bc_us_id': 1
+                'bc_us_id': <?php echo $this->session->userdata('us_id'); ?>
             },
             dataType: "JSON",
             success: function(data) {

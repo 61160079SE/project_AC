@@ -109,13 +109,22 @@ class M_ac_daily_money extends Da_ac_daily_money
         return $query;
     } //get_daily
 
-    public function check()
+   /*
+    * check_date_exist
+    * ดึงข้อมูลทั้งหมดในตารางออกมา
+    * @input dm_date, dm_us_id
+    * @output 0 = ไม่พบ, มากกว่า 0 = พบ
+    * @author 61160079 Adithep Phompha
+    * @Create Date 2564-03-11
+    */
+
+    public function check_date_exist()
     {
-        $sql = "SELECT  dm_id,dm_date,dm_sum_income,dm_sum_expense,dm_us_id
+        $sql = "SELECT COUNT(1) AS exist
                FROM {$this->db_name}.ac_daily_money
-               WHERE dm_date =? ";
-        $query = $this->db->query($sql, array($this->dm_date));
+               WHERE dm_date =? AND dm_us_id =? ";
+        $query = $this->db->query($sql, array($this->dm_date, $this->dm_us_id));
         return $query;
-    } //check
+    }//check_date_exist
 
 } //end class M_ac_daily_money

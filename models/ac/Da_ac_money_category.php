@@ -2,8 +2,8 @@
 /*
  * Da_ac_money_category
  *
- * @author 61160194 Wuttichai Chaiwanna
- * @Create Date 2564-03-02
+ * @author
+ * @Create
  */
 
 include_once 'AC_Model.php';
@@ -26,8 +26,8 @@ class Da_ac_money_category extends AC_Model
      * -
      * @input -
      * @output -
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-02
+     * @author
+     * @Create Date
      */
 
     public function __construct()
@@ -46,8 +46,8 @@ class Da_ac_money_category extends AC_Model
      * เพิ่มข้อมูล 1 record ในตาราง
      * @input bc_name,bc_mt_id,bc_us_id
      * @output -
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-02
+     * @author
+     * @Create Date
      */
 
     public function insert()
@@ -68,8 +68,8 @@ class Da_ac_money_category extends AC_Model
      * แก้ไขข้อมูลในตารางทั้ง record โดยอ้างอิงจาก id
      * @input bc_name,bc_mt_id,bc_us_id, bc_id
      * @output -
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-02
+     * @author
+     * @Create Date
      */
 
     public function update()
@@ -87,8 +87,8 @@ class Da_ac_money_category extends AC_Model
      * ลบข้อมูล 1 record ในตารางโดยอ้างอิงจาก id
      * @input bc_id
      * @output -
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-02
+     * @author
+     * @Create Date
      */
 
     public function delete()

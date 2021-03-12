@@ -41,8 +41,8 @@ class Base_category extends AC_Controller
      * ใช้เรียกหน้าจอเมนูข้อมูลพื้นฐาน
      * @input -
      * @output หน้าจอเมนูหมวดเงิน
-     * @author 61160195 Supanut Witchatanon
-     * @Create Date 2564-03-02
+     * @author 61160194 Wuttichai Chaiwanna
+     * @Create Date 2564-03-05
      */
 
     public function show_base_category()
@@ -69,17 +69,14 @@ class Base_category extends AC_Controller
     {
         $this->load->model($this->config->item('ac_m_folder') . 'M_ac_money_category', "bbc");
 
+         $this->bbc->bc_us_id = $this->session->userdata('us_id');
+
         $this->bbc->bc_mt_id = 1; //1 = รายรับ
-        $data["income"] = $this->bbc->get_by_type()->result();
+        $data["income"] = $this->bbc->get_by_type_and_user()->result();
 
         $this->bbc->bc_mt_id = 2; //2 = รายจ่าย
-        $data["expense"] = $this->bbc->get_by_type()->result();
-        if (empty($data["income"])) {
-            $data["income"] = "no_data";
-        }
-        if (empty($data["expense"])) {
-            $data["expense"] = "no_data";
-        }
+        $data["expense"] = $this->bbc->get_by_type_and_user()->result();
+       
 
         echo json_encode($data);
     }
