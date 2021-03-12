@@ -41,14 +41,14 @@ class M_ac_list_money extends Da_ac_list_money
     public function get_by_date()
     {
         $sql = "SELECT lm_date,lm_customize_category,lm_money,lm_bc_id,lm_us_id,lm_mt_id,lm_id,bc_name
-				FROM {$this->db_name}.ac_list_money 
+				FROM {$this->db_name}.ac_list_money
         LEFT JOIN {$this->db_name}.ac_base_category ON lm_bc_id = bc_id
         WHERE lm_date =? AND lm_us_id=? AND lm_mt_id = ?";
-        $query = $this->db->query($sql, array($this->lm_date,$this->lm_us_id,$this->lm_mt_id));
+        $query = $this->db->query($sql, array($this->lm_date, $this->lm_us_id, $this->lm_mt_id));
         return $query;
     } //get_by_date
 
-     /*
+    /*
      * get_by_user_id
      * ดึงข้อมูลรายการเงินของไอดีผู้ใช้งาน
      * @input -
@@ -66,4 +66,22 @@ class M_ac_list_money extends Da_ac_list_money
         $query = $this->db->query($sql, array($this->bc_us_id, $this->bc_mt_id));
         return $query;
     } //get_by_user_id
+
+    /*
+     * check_if_category_already_use
+     * ตรวจสอบว่าหมวดเงินที่อยากลบ ถูกใช้งานอยู่หรือไม่
+     * @input lm_bc_id
+     * @output 0 หรือมากกว่า 0 (0 = ไม่มี, มากกว่า 0 = มี)
+     * @author 61160194 Wuttichai Chaiwanna
+     * @Create Date 2564-03-10
+     */
+
+    public function check_if_category_already_use()
+    {
+        $sql = "SELECT COUNT(1) AS exist
+                FROM {$this->db_name}.ac_list_money
+                WHERE lm_bc_id = ?";
+        $query = $this->db->query($sql, array($this->lm_bc_id));
+        return $query;
+    } // check_if_category_already_use
 } //end class M_ac_list_money
