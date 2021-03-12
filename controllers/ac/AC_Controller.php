@@ -21,10 +21,24 @@ class AC_controller extends Main_Controller
     public function output_md($view, $data = null)
     {
         $this->load->view('template/material_dashboard/header');
-        $this->load->view('template/ac_header');
+        $this->load->view('template/ac/ac_css');
         $this->load->view('template/material_dashboard/javascript');
+        $this->load->view('template/ac/ac_js');
+        $this->load->view('template/ac/ac_topbar');
+
         $this->load->view($view, $data);
         $this->load->view('template/material_dashboard/footer');
+    }
+
+    // Calling View with "Material Kit" template
+    public function output_mk($view, $data = null)
+    {
+        $this->load->view('template/material_kit/header');
+        $this->load->view('template/ac/ac_css');
+        $this->load->view('template/material_kit/javascript');
+        $this->load->view('template/ac/ac_js');
+        $this->load->view($view, $data);
+        $this->load->view('template/material_kit/footer');
     }
 
     // =====================================================================================================================
@@ -35,7 +49,8 @@ class AC_controller extends Main_Controller
 
     public function index()
     {
-        $this->show_homepage();
+        $this->output_mk($this->config->item('ac_v_user_folder') . "v_login");
+
         // $this->load->model('ac/AC_Model', 'mam');
         // print_r($this->mam->get_all()->result());
     } // index

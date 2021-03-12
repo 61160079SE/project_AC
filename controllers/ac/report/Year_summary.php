@@ -3,7 +3,7 @@
  * Year_summary
  * controller รายงานผลสรุปปีงบประมาณ
  * @author 61160079 Adithep Phompha
- * @Create Date 2564-03-02
+ * @Create Date 2563-12-11
  */
 
 if (!defined('BASEPATH')) {
@@ -29,6 +29,7 @@ class Year_summary extends AC_Controller
     public function __construct()
     {
         parent::__construct();
+
     } //__construct
 
     // =====================================================================================================================
@@ -38,9 +39,9 @@ class Year_summary extends AC_Controller
 
     /*
      * show_Year_summary
-     * ใช้เรียกหน้าจอรายงานผลสรุปปีงบประมาณ
+     * ใช้เรียกหน้าจอรายงานผลสรุปรายปี
      * @input -
-     * @output หน้าจอรายงานผลสรุปปีงบประมาณ
+     * @output หน้าจอรายงานผลสรุปรายปี
      * @author 61160195 Supanut Witchatanon
      * @Create Date 2564-03-02
      */

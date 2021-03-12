@@ -50,7 +50,7 @@ class M_ac_user extends Da_ac_user
     /*
      * check_if_us_name_exist
      * ตรวจสอบว่ามี us_name รึเปล่า
-     * @input -
+     * @input us_name
      * @output ข้อมูลตาม us_name
      * @author 61160065 Netipong Kaewin
      * @Create Date 2564-03-04

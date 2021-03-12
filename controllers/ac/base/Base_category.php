@@ -41,8 +41,8 @@ class Base_category extends AC_Controller
      * ใช้เรียกหน้าจอเมนูข้อมูลพื้นฐาน
      * @input -
      * @output หน้าจอเมนูหมวดเงิน
-     * @author 61160194 Wuttichai Chaiwanna
-     * @Create Date 2564-03-05
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function show_base_category()

@@ -1,7 +1,7 @@
 <?php
 /*
  * Daily_summary
- * controller ผลสรุปรายวัน
+ * controller รายงานผลสรุปปีงบประมาณ
  * @author 61160195 Supanut Witchatanon
  * @Create Date 2564-03-02
  */
@@ -84,6 +84,6 @@ class Daily_summary extends AC_Controller
         $data["daily_money"] = $this->mdm->get_daily()->result();
 
         echo json_encode($data);
-    } // get_daily_money_ajax
+    } // get_daily_money
 
 } //end class Daily_summary

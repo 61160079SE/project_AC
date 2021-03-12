@@ -92,7 +92,7 @@ class M_ac_daily_money extends Da_ac_daily_money
  * get_daily
  * ดึงข้อมูลทั้งหมดในตารางออกมา
  * @input -
- * @output ข้อมูลวันทั้งหมดในตาราง
+ * @output ข้อมูลวันทั้งหมดในตารางของผู้ใช้ที่ระบุไว้
  * @author 61160077 Siripoon Yimthanom
  * @Create Date 2564-03-02
  */
@@ -108,15 +108,6 @@ class M_ac_daily_money extends Da_ac_daily_money
         $query = $this->db->query($sql, array($this->dm_us_id, $this->year, $this->month));
         return $query;
     } //get_daily
-
-/*
- * check
- * ดึงข้อมูลทั้งหมดในตารางออกมา
- * @input -
- * @output เช็คข้อมูลวัน
- * @author 61160077 Siripoon Yimthanom
- * @Create Date 2564-03-02
- */
 
     public function check()
     {

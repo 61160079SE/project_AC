@@ -36,8 +36,8 @@ class Login extends AC_Controller
      * ใช้เรียกหน้าจอเข้าสู่ระบบ
      * @input -
      * @output หน้าจอเข้าสู่ระบบ
-     * @author 61160082 Areerat Pongurai
-     * @Create Date 2564-03-04
+     * @author 61160195 Supanut Witchatanon
+     * @Create Date 2564-03-02
      */
 
     public function show_login()

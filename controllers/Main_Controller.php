@@ -14,7 +14,16 @@ class Main_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        error_reporting(0); // ยกเลิกการแสดง error บนหน้าจอ แต่ถ้า inspect ดูก็จะเจอ
     }
+
+    public function __destruct()
+    {
+        $this->remove_session();
+    } //__destruct
+
+    // =====================================================================================================================
+    // =====================================================================================================================
 
     // default
     public function index()
@@ -22,8 +31,6 @@ class Main_Controller extends CI_Controller
         echo "<div style = 'text-align:center; transform: translate(-50%, -50%); position: fixed; top: 50%; left: 50%'>";
         echo "<h1> Main controller (^ ^)/ </h1>";
         echo "</div>";
-
-        // $this->output_mk('skill_test/welcome');
     }
 
     // Calling View with "Material Dashboard" template
@@ -104,6 +111,5 @@ class Main_Controller extends CI_Controller
     public function test()
     {
         $this->output_mk('test.php');
-        // $this->output_md('test.php');
     }
 } //class Main_Controller

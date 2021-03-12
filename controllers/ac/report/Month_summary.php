@@ -44,7 +44,8 @@ class Month_summary extends AC_Controller
      * @author 61160195 Supanut Witchatanon
      * @Create Date 2564-03-02
      */
-    /*
+
+     /*
      * show_month_summary
      * ใช้เรียกหน้าจอสรุปผลรายเดือน
      * @input $year
@@ -66,9 +67,9 @@ class Month_summary extends AC_Controller
 
     /*
      * get_month_money_ajax
-     * ดึงข้อมูลเงินรายเดือน
+     * ดึงข้อมูลรายการเงิน
      * @input -
-     * @output หน้าจอแสดงรายละเอียดรายเดือน
+     * @output หน้าจอแสดงรายละเอียดรายวัน
      * @author 61160182 Nawarut Nambunsri
      * @Create Date 2564-03-02
      */
@@ -81,7 +82,7 @@ class Month_summary extends AC_Controller
         $data["month_money"] = $this->mdm->get_month()->result();
 
         echo json_encode($data);
-    } //get_month_money_ajax
+    } // get_daily_money
 
     // =====================================================================================================================
     // =====================================================================================================================
