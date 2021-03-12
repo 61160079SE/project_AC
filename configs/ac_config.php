@@ -18,6 +18,7 @@ $config["ac_c_folder"] = "ac/";
 $config["ac_v_base_folder"] = $config["ac_v_folder"] . "base/"; //folder base
 $config["ac_v_report_folder"] = $config["ac_v_folder"] . "report/"; //folder report
 $config["ac_v_accounting_folder"] = $config["ac_v_folder"] . "accounting_management/"; //folder accounting_management
+$config["ac_v_user_folder"] = $config["ac_v_folder"] . "user/"; //folder user
 
 //folder หลักของ controller
 $config["ac_c_folder"] = "ac/";
@@ -26,6 +27,7 @@ $config["ac_c_folder"] = "ac/";
 $config["ac_c_base_folder"] = $config["ac_c_folder"] . "base/"; //folder base
 $config["ac_c_report_folder"] = $config["ac_c_folder"] . "report/"; //folder report
 $config["ac_c_accounting_folder"] = $config["ac_c_folder"] . "accounting_management/"; //folder accounting_management
+$config["ac_c_user_folder"] = $config["ac_c_folder"] . "user/"; //folder user
 
 /* ================ ไฟล์  ================ */
 
